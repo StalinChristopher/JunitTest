@@ -156,7 +156,7 @@ public class UserRegistrationTest {
 	}
 	
 	@Test
-	public void givenpassword_ifcontainsatleast1capital_returnfalse() {
+	public void givenpassword_ifdoesnotcontainsatleast1capital_returnfalse() {
 		UserRegistration user = new UserRegistration();
 		boolean result = user.validatePassword("dfdfr232");
 		Assert.assertFalse(result);
