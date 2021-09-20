@@ -86,4 +86,45 @@ public class UserRegistrationTest {
 		boolean result = user.validateEmail("abc.com");
 		Assert.assertFalse(result);
 	}
+	
+	/**
+	 * Test case for valid phone number
+	 */
+	@Test
+	public void givenphonenumber_itisproper_returntrue() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validatePhone("91 9344235951");
+		Assert.assertTrue(result);
+	}
+	
+	/**
+	 * Test case fails if no country code is given
+	 */
+	@Test
+	public void givenphonenumber_withoutcountrycode_returnfalse() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validatePhone("9334414143");
+		Assert.assertFalse(result);
+	}
+	
+	/**
+	 * Test case fails if there is no 10 digits in phone number
+	 */
+	@Test
+	public void givenphonenumber_lessthantendigit_returnfalse() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validatePhone("91 966088676");
+		Assert.assertFalse(result);
+	}
+	
+	/**
+	 * Test case passes because it is invalid to have more than 
+	 * 1 space after country code for mobile number 
+	 */
+	@Test
+	public void givenphonenumber_morethanonespaceaftercountrycode_returnfalse() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validatePhone("91  9860886760");
+		Assert.assertFalse(result);
+	}
 }
