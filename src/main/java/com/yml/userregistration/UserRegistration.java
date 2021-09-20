@@ -8,4 +8,8 @@ public class UserRegistration {
 	public boolean validateFirstName(String firstName) {
 		return Pattern.matches(NAME, firstName);
 	}
+	
+	public boolean validateLastName(String lastName) {
+		return Pattern.matches(NAME, lastName);
+	}
 }
