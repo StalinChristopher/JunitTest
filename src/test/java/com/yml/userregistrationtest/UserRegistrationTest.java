@@ -24,7 +24,7 @@ public class UserRegistrationTest {
 	public void firstname_haslessthan3characters_returnfalse() {
 		UserRegistration userReg = new UserRegistration();
 		boolean result = userReg.validateFirstName("ab");
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class UserRegistrationTest {
 	public void firstname_ifdoesnotstartwithcapital_returnfalse() {
 		UserRegistration userReg = new UserRegistration();
 		boolean result = userReg.validateFirstName("ab");
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class UserRegistrationTest {
 	public void lasstname_haslessthan3characters_returnfalse() {
 		UserRegistration userReg = new UserRegistration();
 		boolean result = userReg.validateLastName("ab");
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
 	}
 	
 	/**
@@ -64,6 +64,26 @@ public class UserRegistrationTest {
 	public void lastname_ifdoesnotstartwithcapital_returnfalse() {
 		UserRegistration userReg = new UserRegistration();
 		boolean result = userReg.validateLastName("afasfas");
+		Assert.assertFalse(result);
+	}
+	
+	/**
+	 * Test case for valid email
+	 */
+	@Test
+	public void givenemail_ifvalid_returntrue() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validateEmail("stalin_205@gmail.com");
 		Assert.assertTrue(result);
+	}
+	
+	/**
+	 * Test case passes when invalid  mail id is given
+	 */
+	@Test
+	public void givenemail_ifinvalid_returnfalse() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validateEmail("abc.com");
+		Assert.assertFalse(result);
 	}
 }
