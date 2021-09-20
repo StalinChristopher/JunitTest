@@ -6,7 +6,7 @@ public class UserRegistration {
 	final String NAME = "^[A-Z]{1}[a-zA-Z]{2,}";
 	final String EMAIL = "^[0-9a-zA-Z]+([.+_\\-][0-9a-zA-Z]*)*@[0-9a-zA-Z]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})*$";
 	final String PHONE = "[0-9]{2}[\\s][0-9]{10}";
-	final String PASSWORD = "(?=.*[A-Z])(?=.*[0-9]).{8,}";
+	final String PASSWORD = "(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&!]).{8,}";
 	
 	public boolean validateFirstName(String firstName) {
 		return Pattern.matches(NAME, firstName);
