@@ -134,7 +134,7 @@ public class UserRegistrationTest {
 	@Test
 	public void givenpassword_ifmorethan8characters_returntrue() {
 		UserRegistration user = new UserRegistration();
-		boolean result = user.validatePassword("afaafasffa");
+		boolean result = user.validatePassword("afaafaAsffa");
 		Assert.assertTrue(result);
 	}
 	
@@ -145,6 +145,20 @@ public class UserRegistrationTest {
 	public void givenpassword_iflessthan8characters_returnfalse() {
 		UserRegistration user = new UserRegistration();
 		boolean result = user.validatePassword("faa34f");
+		Assert.assertFalse(result);
+	}
+	
+	@Test
+	public void givenpassword_ifcontainsatleast1capital_returntrue() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validatePassword("dfdfA232");
+		Assert.assertTrue(result);
+	}
+	
+	@Test
+	public void givenpassword_ifcontainsatleast1capital_returnfalse() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validatePassword("dfdfr232");
 		Assert.assertFalse(result);
 	}
 }
