@@ -127,4 +127,24 @@ public class UserRegistrationTest {
 		boolean result = user.validatePhone("91  9860886760");
 		Assert.assertFalse(result);
 	}
+	
+	/**
+	 * Test case for valid password with more than 8 characters
+	 */
+	@Test
+	public void givenpassword_ifmorethan8characters_returntrue() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validatePassword("afaafasffa");
+		Assert.assertTrue(result);
+	}
+	
+	/**
+	 * Test case for invalid password with less than 8 characters
+	 */
+	@Test
+	public void givenpassword_iflessthan8characters_returnfalse() {
+		UserRegistration user = new UserRegistration();
+		boolean result = user.validatePassword("faa34f");
+		Assert.assertFalse(result);
+	}
 }
