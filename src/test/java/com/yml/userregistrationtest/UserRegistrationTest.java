@@ -24,7 +24,7 @@ public class UserRegistrationTest {
 	public void firstname_haslessthan3characters_returnfalse() {
 		UserRegistration userReg = new UserRegistration();
 		boolean result = userReg.validateFirstName("ab");
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class UserRegistrationTest {
 	public void firstname_ifdoesnotstartwithcapital_returnfalse() {
 		UserRegistration userReg = new UserRegistration();
 		boolean result = userReg.validateFirstName("ab");
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class UserRegistrationTest {
 	public void lasstname_haslessthan3characters_returnfalse() {
 		UserRegistration userReg = new UserRegistration();
 		boolean result = userReg.validateLastName("ab");
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
 	}
 	
 	/**
@@ -64,6 +64,6 @@ public class UserRegistrationTest {
 	public void lastname_ifdoesnotstartwithcapital_returnfalse() {
 		UserRegistration userReg = new UserRegistration();
 		boolean result = userReg.validateLastName("afasfas");
-		Assert.assertTrue(result);
+		Assert.assertFalse(result);
 	}
 }
