@@ -1,11 +1,50 @@
 package com.yml.userregistrationtest;
 
+import java.util.Arrays;
+import java.util.Collection;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import com.yml.userregistration.UserRegistration;
 
+@RunWith(Parameterized.class)
 public class JunitTestCases {
+	private UserRegistration userReg;
+	private String email;
+	
+	public JunitTestCases(String email) {
+		this.email = email;
+	}
+	
+	@Before
+	public void initialize() {
+		userReg = new UserRegistration();
+	}
+	
+	@Parameterized.Parameters
+	public static Collection input() {
+		return Arrays.asList(
+				new Object[][] {
+					{"xyz@gmail.com"},
+					{"abc_205@gmail.com"},
+					{"abc20@gmail.com"},
+					{"xyz.abc@gmail.com"},
+					
+					{"abcgmail.com"},
+					{"abc@gmail"},
+					{"abc@.com"},
+					{"123@gmail.com.ind"}
+				});
+	}
+	
+	@Test
+	public void testUseremail() {
+		System.out.println("Email : "+email+"\n");
+		Assert.assertTrue(userReg.validateEmail(this.email));
+	}
 	
 	@Test
     public void happyTest() throws Exception {
