@@ -14,6 +14,7 @@ import com.yml.customexceptions.InvalidLastNameException;
 import com.yml.customexceptions.InvalidPasswordException;
 import com.yml.customexceptions.InvalidPhoneException;
 import com.yml.userregistration.UserRegistration;
+import com.yml.userregistration.ValidationInterface;
 
 @RunWith(Parameterized.class)
 public class JunitTestCases {
@@ -57,29 +58,26 @@ public class JunitTestCases {
         String email = "john_English.@gmail.com";
         String mobile = "91 9435221543";
         String password = "passWord123@";
-        try {
-            boolean firstNameRes = userReg.validateFirstName(firstName);
-            boolean lastNameRes = userReg.validateLastName(lastName);
-            boolean emailRes = userReg.validateEmail(email);
-            boolean mobileRes = userReg.validatePhone(mobile);
-            boolean passwordRes = userReg.validatePassword(password);
-
-            Assert.assertTrue(firstNameRes);
-            Assert.assertTrue(lastNameRes);
-            Assert.assertTrue(emailRes);
-            Assert.assertTrue(mobileRes);
-            Assert.assertTrue(passwordRes);
-        } catch (InvalidFirstNameException ifn) {
-            ifn.printStackTrace();
-        } catch (InvalidLastNameException iln) {
-            iln.printStackTrace();
-        } catch (InvalidEmailException iem) {
-            iem.printStackTrace();
-        } catch (InvalidPhoneException ipe) {
-            ipe.printStackTrace();
-        } catch (InvalidPasswordException ipa) {
-            ipa.printStackTrace();
-        }
+        ValidationInterface validator = (fName, lName, mail, phone, pword) -> {
+            try {
+                Assert.assertTrue(userReg.validateFirstName(fName));
+                Assert.assertTrue(userReg.validateLastName(lName));
+                Assert.assertTrue(userReg.validateEmail(mail));
+                Assert.assertTrue(userReg.validatePhone(phone));
+                Assert.assertTrue(userReg.validatePassword(pword));
+            } catch (InvalidFirstNameException ifn) {
+                ifn.printStackTrace();
+            }catch (InvalidLastNameException iln) {
+                iln.printStackTrace();
+            }catch (InvalidEmailException ie) {
+                ie.printStackTrace();
+            }catch (InvalidPhoneException im) {
+                im.printStackTrace();
+            }catch (InvalidPasswordException ip) {
+                ip.printStackTrace();
+            }
+        };
+        validator.validate(firstName, lastName, email, mobile, password);
 
     }
 
@@ -97,29 +95,26 @@ public class JunitTestCases {
         String mobile = "91 8323";
         String password = "temp";
 
-        try {
-            boolean firstNameRes = userReg.validateFirstName(firstName);
-            boolean lastNameRes = userReg.validateLastName(lastName);
-            boolean emailRes = userReg.validateEmail(email);
-            boolean mobileRes = userReg.validatePhone(mobile);
-            boolean passwordRes = userReg.validatePassword(password);
-
-            Assert.assertTrue(firstNameRes);
-            Assert.assertTrue(lastNameRes);
-            Assert.assertTrue(emailRes);
-            Assert.assertTrue(mobileRes);
-            Assert.assertTrue(passwordRes);
-        } catch (InvalidFirstNameException ifn) {
-            ifn.printStackTrace();
-        } catch (InvalidLastNameException iln) {
-            iln.printStackTrace();
-        } catch (InvalidEmailException iem) {
-            iem.printStackTrace();
-        } catch (InvalidPhoneException ipe) {
-            ipe.printStackTrace();
-        } catch (InvalidPasswordException ipa) {
-            ipa.printStackTrace();
-        }
+        ValidationInterface validator = (fName, lName, mail, phone, pword) -> {
+            try {
+                Assert.assertTrue(userReg.validateFirstName(fName));
+                Assert.assertTrue(userReg.validateLastName(lName));
+                Assert.assertTrue(userReg.validateEmail(mail));
+                Assert.assertTrue(userReg.validatePhone(phone));
+                Assert.assertTrue(userReg.validatePassword(pword));
+            } catch (InvalidFirstNameException ifn) {
+                ifn.printStackTrace();
+            }catch (InvalidLastNameException iln) {
+                iln.printStackTrace();
+            }catch (InvalidEmailException ie) {
+                ie.printStackTrace();
+            }catch (InvalidPhoneException im) {
+                im.printStackTrace();
+            }catch (InvalidPasswordException ip) {
+                ip.printStackTrace();
+            }
+        };
+        validator.validate(firstName, lastName, email, mobile, password);
 
     }
 }
